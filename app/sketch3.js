@@ -13,19 +13,8 @@ const WAVE_AMPLITUDE = 250;
 
 const SPHERE_RADIUS = 12;
 
-let moonSurface;
-let earthSurface;
-let bg;
-let cloudSurface;
-function preload(){
-  bg = loadImage('../images/moon.jpg');
-  moonSurface = loadImage('../images/moon.jpg');
-  earthSurface = loadImage('../images/earth.jpg');
-  cloudSurface = loadImage('../images/cloud.png');
-}
-
 function setup() {
-	console.log(cloudSurface.blend(earthSurface, 0, 0, 33, 100, 67, 0, 33, 100, LIGHTEST));
+	//createCanvas(xRes, yRes, WEBGL);
 	createCanvas(
 		xRes,
 		yRes,
@@ -39,34 +28,14 @@ function setup() {
 	}
 }
 
-let r = 90;
 function draw () {
-	r += 0.5;
-	//background(0);
-  ambientLight(20, 20, 20);
-  pointLight(255, 255, 255, 30, 10, 0);
+	background(0);
 
-	//rotateX(radians(r));
+  ambientLight(150, 140, 80);
+  pointLight(200, 200, 200, 30, 30, 0);
 
-	translate(0, 0, -1000);
-
-	push();
-	rotateY(radians(r/10));
-	texture(earthSurface);
-	//ambientMaterial(0, 0, 200, 100);
-	sphere(200);
-	pop();
-
-
-	rotateZ(radians(-10));
-	rotateY(radians(r*-0.3));
-
-	translate(1000, 0, 0);
-	texture(moonSurface);
-	sphere(30);
-
-	// particles.map(p => p.update());
-	// particles.map(p => p.draw(particles));
+	particles.map(p => p.update());
+	particles.map(p => p.draw(particles));
 }
 
 function Particle() {
